@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+    server:
+      image: app
+      ports:
+        - "8082:8082"
+      networks:
+        - employee-mysql
+networks:
+ employee-mysql:
+      
