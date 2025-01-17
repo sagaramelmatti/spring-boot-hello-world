@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('stage1') {
+    stage('stage2') {
       steps {
-        echo "Spring Boot Hello $BUILD_NUMBER of Job $DEMO"
+        sh 'echo "This is build $BUILD_NUMBER of demo $DEMO"'
       }
     }
 
