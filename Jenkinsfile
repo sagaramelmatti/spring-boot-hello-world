@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('stage1') {
       steps {
-        echo 'Spring Boot Hello $BUILD_NUMBER of Job $DEMO'
+        echo "Spring Boot Hello $BUILD_NUMBER of Job $DEMO"
       }
     }
 
