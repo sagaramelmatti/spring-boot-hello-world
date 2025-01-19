@@ -8,10 +8,26 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Running test cases...'
-                sh 'mvn test'
+        stage('Parallel Tests') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        echo 'Running Unit Tests...'
+                        sh 'mvn test -Dtest=UnitTests'
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        echo 'Running Integration Tests...'
+                        sh 'mvn test -Dtest=IntegrationTests'
+                    }
+                }
+                stage('Static Code Analysis') {
+                    steps {
+                        echo 'Running Static Code Analysis...'
+                        sh 'mvn checkstyle:check'
+                    }
+                }
             }
         }
     }
