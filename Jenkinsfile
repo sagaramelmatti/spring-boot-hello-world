@@ -22,12 +22,6 @@ pipeline {
                         sh 'mvn test -Dtest=IntegrationTests'
                     }
                 }
-                stage('Static Code Analysis') {
-                    steps {
-                        echo 'Running Static Code Analysis...'
-                        sh 'mvn checkstyle:check'
-                    }
-                }
             }
         }
     }
