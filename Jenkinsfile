@@ -1,14 +1,18 @@
 pipeline {
-  agent any
-  stages {
-    stage('stage2') {
-      steps {
-        sh 'echo "This is build $BUILD_NUMBER of demo $DEMO"'
-      }
-    }
+    agent any
 
-  }
-  environment {
-    DEMO = '1'
-  }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                sh 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running test cases...'
+                sh 'mvn test'
+            }
+        }
+    }
 }
